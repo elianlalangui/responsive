@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,800;1,600&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav{
+    height: 50px;
+    background-color: #27313E;
+}
+
+.nav__logo{
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.nav__container{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 2rem;
+}
+
+.nav__icon, .nav__checkbox{
+    display: none;
+}
+
+.nav__menu{
+    display: grid;
+    grid-auto-flow: column; 
+    gap: 3rem;
+    list-style-type: none;
+}
+
+.nav__menu-item{
+    --variable: polygon(0 0, 0 0, 0 100%, 0 100%);    
+}
+
+.nav__menu-item::after{
+    content: "";
+    display: block;
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    clip-path: var(--variable);
+    transition: clip-path 0.4s;
+}
+
+.nav__menu-item:hover{
+    --variable: polygon(0 0, 100% 0, 100% 100%, 0 100%);    
+}
+
+.nav__menu-item > a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.nav__icon > i{
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+@media (max-width: 700px){
+    .nav__icon{
+        display: block;
+    }
+    
+    .nav__menu{
+        position: fixed;
+        top: 50px;
+        bottom: 0;
+        background-color: rgb(24, 49, 83);
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        clip-path: circle(0 at center);
+        transition: clip-path 1s ease-in-out;
+    }
+
+    .nav__checkbox:checked + .nav__menu{
+        clip-path: circle(100% at center);
+    }
+}
